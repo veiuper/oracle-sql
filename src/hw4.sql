@@ -21,8 +21,8 @@ WHERE PHONE_NUMBER LIKE '___.___.____';
 
 SELECT *
 FROM EMPLOYEES
-WHERE SUBSTR(FIRST_NAME, -1) = 'm' AND
-      LENGTH(FIRST_NAME) > 5;
+WHERE SUBSTR(FIRST_NAME, -1) = 'm'
+  AND LENGTH(FIRST_NAME) > 5;
 
 -- 5. Выведите дату следующей пятницы.
 

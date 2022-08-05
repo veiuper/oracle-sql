@@ -5,20 +5,18 @@ FROM regions;
 
 -- 2. Выведите информацию о имени, id департамента, зарплате и фамилии для всех работников.
 
-SELECT
-    first_name,
-    department_id,
-    salary,
-    last_name
+SELECT first_name,
+       department_id,
+       salary,
+       last_name
 FROM employees;
 
 -- 3. Выведите информацию о id работника, электронной почте и дату, которая была за неделю до трудоустройства для всех работников.
 -- Столбец, который будет содержать дату назовите One week before hire date.
 
-SELECT
-    employee_id,
-    email,
-    hire_date - 7 AS "One week before hire date"
+SELECT employee_id,
+       email,
+       hire_date - 7 AS "One week before hire date"
 FROM employees;
 
 -- 4. Выведите информацию о работниках с их позициями в формате: Donald(SH_CLERK). Назовите столбец our_employees.
@@ -39,11 +37,10 @@ FROM employees;
 -- - максимальную з/п и назовите столбец max,
 -- - новую з/п, которая будет называться new_salary и вычисляться по формуле: max_salary * 2 - 2000.
 
-SELECT
-    job_title,
-    'min = ' || min_salary || ', max = ' || max_salary AS info,
-    max_salary AS max,
-    max_salary * 2 - 2000 AS new_salary
+SELECT job_title,
+       'min = ' || min_salary || ', max = ' || max_salary AS info,
+       max_salary                                         AS max,
+       max_salary * 2 - 2000                              AS new_salary
 FROM jobs;
 
 -- 7. Выведите на экран предложение «Peter's dog is very clever», используя одну из двух техник работы с одинарными кавычками.

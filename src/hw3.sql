@@ -13,23 +13,20 @@ WHERE job_id = 'FI_ACCOUNT';
 -- 3. Выведите информацию о имени, фамилии, з/п и номере департамента для сотрудников из 50го департамента с зарплатой,
 -- большей 4000.
 
-SELECT
-    first_name,
-    last_name,
-    salary,
-    department_id
+SELECT first_name,
+       last_name,
+       salary,
+       department_id
 FROM employees
-WHERE
-    department_id = 50 AND
-    salary > 4000;
+WHERE department_id = 50
+  AND salary > 4000;
 
 -- 4. Получите список всех сотрудников, которые работают или в 20м, или в 30м департаменте.
 
 SELECT *
 FROM employees
-WHERE
-    department_id = 20 OR
-    department_id = 30;
+WHERE department_id = 20
+   OR department_id = 30;
 
 -- 5. Получите список всех сотрудников, у которых вторая и последняя буква в имени равна 'a'.
 
@@ -42,9 +39,8 @@ WHERE first_name LIKE '_a%a';
 
 SELECT *
 FROM employees
-WHERE
-    department_id in (50, 80) AND
-    commission_pct IS NOT NULL
+WHERE department_id in (50, 80)
+  AND commission_pct IS NOT NULL
 ORDER BY email;
 
 -- 7. Получите список всех сотрудников, у которых в имени содержатся минимум 2 буквы 'n'.
@@ -66,10 +62,9 @@ ORDER BY department_id DESC NULLS LAST;
 
 SELECT *
 FROM employees
-WHERE
-    salary BETWEEN 3000 AND 7000 AND
-    commission_pct IS NULL AND
-    job_id IN ('PU_CLERK', 'ST_MAN', 'ST_CLERK');
+WHERE salary BETWEEN 3000 AND 7000
+  AND commission_pct IS NULL
+  AND job_id IN ('PU_CLERK', 'ST_MAN', 'ST_CLERK');
 
 -- 10. Получите список всех сотрудников у которых в имени содержится символ '%'.
 
@@ -81,13 +76,11 @@ WHERE first_name LIKE '%\%%' ESCAPE '\';
 -- рабочий id которых больше или равен 120 и job_id не равен IT_PROG.
 -- Отсортируйте строки по job_id (возрастающий порядок) и именам (убывающий порядок).
 
-SELECT
-    EMPLOYEE_ID,
-    job_id,
-    first_name,
-    salary
+SELECT EMPLOYEE_ID,
+       job_id,
+       first_name,
+       salary
 FROM employees
-WHERE
-    employee_id >= 120 AND
-    job_id != 'IT_PROG'
+WHERE employee_id >= 120
+  AND job_id != 'IT_PROG'
 ORDER BY job_id, first_name DESC;

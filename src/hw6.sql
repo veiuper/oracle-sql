@@ -2,13 +2,12 @@
 -- с самой ранней и самой поздней датой прихода на работу и с количеством сотрудников.
 -- Сортировать по количеству сотрудников (по убыванию).
 
-SELECT
-    DEPARTMENT_ID,
-    MIN(SALARY),
-    MAX(SALARY),
-    MIN(HIRE_DATE),
-    MAX(HIRE_DATE),
-    COUNT(*)
+SELECT DEPARTMENT_ID,
+       MIN(SALARY),
+       MAX(SALARY),
+       MIN(HIRE_DATE),
+       MAX(HIRE_DATE),
+       COUNT(*)
 FROM EMPLOYEES
 GROUP BY DEPARTMENT_ID
 ORDER BY COUNT(*) DESC;
@@ -18,9 +17,8 @@ ORDER BY COUNT(*) DESC;
 -- Выводить строки для букв, где количество имён, начинающихся с неё больше 1.
 -- Сортировать по количеству.
 
-SELECT
-    SUBSTR(FIRST_NAME, 1, 1),
-    COUNT(*)
+SELECT SUBSTR(FIRST_NAME, 1, 1),
+       COUNT(*)
 FROM EMPLOYEES
 GROUP BY SUBSTR(FIRST_NAME, 1, 1)
 HAVING COUNT(*) > 1
@@ -29,18 +27,16 @@ ORDER BY COUNT(*);
 -- 3. Выведите id департамента, з/п и количество сотрудников,
 -- которые работают в одном и том же департаменте и получают одинаковую зарплату.
 
-SELECT
-    DEPARTMENT_ID,
-    SALARY,
-    COUNT(*)
+SELECT DEPARTMENT_ID,
+       SALARY,
+       COUNT(*)
 FROM EMPLOYEES
 GROUP BY DEPARTMENT_ID, SALARY;
 
 -- 4. Выведите день недели и количество сотрудников, которых приняли на работу в этот день.
 
-SELECT
-    TO_CHAR(HIRE_DATE, 'Day'),
-    COUNT(*)
+SELECT TO_CHAR(HIRE_DATE, 'Day'),
+       COUNT(*)
 FROM EMPLOYEES
 GROUP BY TO_CHAR(HIRE_DATE, 'Day');
 
@@ -49,9 +45,8 @@ GROUP BY TO_CHAR(HIRE_DATE, 'Day');
 SELECT DEPARTMENT_ID
 FROM EMPLOYEES
 GROUP BY DEPARTMENT_ID
-HAVING
-    COUNT(*) > 30 AND
-    SUM(SALARY) > 300000;
+HAVING COUNT(*) > 30
+   AND SUM(SALARY) > 300000;
 
 -- 6. Из таблицы countries вывести все region_id, для которых сумма всех букв их стран больше 50ти.
 
@@ -62,9 +57,8 @@ HAVING SUM(LENGTH(COUNTRY_NAME)) > 50;
 
 -- 7. Выведите информацию о job_id и округленную среднюю зарплату работников для каждого job_id.
 
-SELECT
-    JOB_ID,
-    ROUND(AVG(SALARY))
+SELECT JOB_ID,
+       ROUND(AVG(SALARY))
 FROM EMPLOYEES
 GROUP BY JOB_ID;
 
@@ -78,11 +72,10 @@ HAVING COUNT(DISTINCT JOB_ID) > 1;
 -- 9. Выведите информацию о department, job_id,
 -- максимальную и минимальную з/п для всех сочетаний department_id - job_id, где средняя з/п больше 10000.
 
-SELECT
-    DEPARTMENT_ID,
-    JOB_ID,
-    MAX(SALARY),
-    MIN(SALARY)
+SELECT DEPARTMENT_ID,
+       JOB_ID,
+       MAX(SALARY),
+       MIN(SALARY)
 FROM EMPLOYEES
 GROUP BY DEPARTMENT_ID, JOB_ID
 HAVING AVG(SALARY) > 10000;
